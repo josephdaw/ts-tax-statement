@@ -5,6 +5,7 @@ import pandas as pd
 # Import my local files
 
 def importRatesFromRBA(startDate, endDate):
+    print('importing rba rates...')
     # import AUDUSD from RBA interest rates - as required by the ATO
     rbaRates1 = pd.read_excel('https://www.rba.gov.au/statistics/tables/xls-hist/2018-2022.xls',skiprows=10)
     rbaRates2 = pd.read_excel('https://www.rba.gov.au/statistics/tables/xls-hist/2023-current.xls',skiprows=10)

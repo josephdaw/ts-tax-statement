@@ -16,11 +16,14 @@ load_dotenv()
 
 ACCOUNT_NUMBER = os.environ.get("ACCOUNT_NUMBER")
 
+# Set the start and end dates for the report in the format yyyy,mm,dd
+startDate = dt.datetime(2022, 7, 1)
+endDate = dt.datetime(2023, 7, 1)
 
 #%% Scrape Tradestation for trade list
 print('webscrape for TS Trades...')
 # note: dates are in format mm/dd/yyyy
-dfTrades = importOrders('07/01/2022','07/01/2023', ACCOUNT_NUMBER)
+dfTrades = importOrders(startDate.strftime('%m/%d/%Y'),endDate.strftime('%m/%d/%Y'), ACCOUNT_NUMBER)
 
 #%% Save trades to csv
 print('...done\nscrape tradestation website for orders...')
@@ -37,15 +40,8 @@ df.sort_values(by=['Date','Symbol'], ascending=[True,True], inplace=True)
 df.reset_index(drop=True,inplace=True)
 
 #%% Import and concat RBA AUD Daily Rates
-print('importing rba rates...')
-startDate = dt.datetime(2022,7,1)
-endDate = dt.datetime(2023,7,1)
-
 # Call the function to import the RBA rates
-print('importing rba rates...')
-start_date = dt.datetime(2022, 7, 1)
-end_date = dt.datetime(2023, 7, 1)
-audusd = importRatesFromRBA(start_date, end_date)
+audusd = importRatesFromRBA(startDate, endDate)
 
 #%% Join AUDUSD xRates to the df
 # Join audusd and df, but drop any rows where Symbol is NAN - ie there is an entry for AUDUSD but there was no trade on the day
