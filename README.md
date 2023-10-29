@@ -39,5 +39,9 @@ All development of this project happens through GitHub. We welcome constructive 
 ## Changelog
 Every significant change is documented in the [changelog file](CHANGELOG.md). 
 
+## Authors and Acknowledgement
+- [Joseph Daw](https://josephdaw.com) - Editing/Repo Management
+- [Matthew Wills](https://github.com/matthew-wills) - Coding
+
 ## License
 This project is released under the [MIT License](LICENSE).
