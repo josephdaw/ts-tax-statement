@@ -25,7 +25,8 @@ def importOrders(startDate,endDate,accountNumber):
     }
     
     # Send a GET request to the URL and get the response content
-    response = requests.get(url, params=params, settimeout=10)
+    response = requests.get(url, params=params)
+    # response = requests.get(url, params=params, timeout=10)
     
     # print(response.text)
     
